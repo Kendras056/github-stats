@@ -47,9 +47,12 @@ jobs:
     # Commit all changed files to the repository
     - name: Commit to the repo
       run: |
-        git config --global user.name "jstrieb/github-stats"
-        git config --global user.email "github-stats[bot]@jstrieb.github.io"
-        git add .
+        git config --global user.name "Kendras056"
+        git config --global user.email "Kendras056@gmail.com"
+        # Gerrit Code Review
+        curl -Lo .git/hooks/commit-msg https://gerrit-review.googlesource.com/tools/hooks/commit-msg
+        chmod u+x .git/hooks/commit-msg
         # Force the build to succeed, even if no files were changed
-        git commit -m 'Update generated files' || true
+        git add .
+        git commit -m 'github-stats: Update generated files' || true
         git push
